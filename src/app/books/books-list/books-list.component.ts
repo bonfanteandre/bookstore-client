@@ -21,4 +21,12 @@ export class BooksListComponent implements OnInit {
             .subscribe(books => this.books = books);
     }
 
+    private deleteBook(book: Book) {
+        let deleteBook = confirm(`Deseja remover ${book.title}?`);
+        if (deleteBook) {
+            this.booksService
+                .delete(book)
+                .subscribe(() => this.loadBooks())
+        }
+    }
 }

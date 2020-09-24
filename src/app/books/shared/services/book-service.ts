@@ -15,4 +15,8 @@ export class BooksService {
     public getAllBooksOrderedByName(): Observable<Book[]> {
         return this.http.get<Book[]>(`${API}/books`);
     }
+
+    public delete(book: Book): Observable<any> {
+        return this.http.delete(`${API}/books/${book.id}`);
+    }
 }
