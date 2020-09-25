@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row mt-2 mb-2">
         <div class="col-12">
+            <bs-errors [errors]="errors"></bs-errors>
             <form [formGroup]="bookForm" *ngIf="book">
                 <div class="form-group">
                   <label><strong>Título</strong></label>

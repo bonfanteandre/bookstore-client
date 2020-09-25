@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Book } from "../shared/models/book";
 import { BooksService } from "../shared/services/book-service";
+import { Error } from "../shared/models/error";
 
 @Component({
     selector: 'bs-books-form',
@@ -15,6 +16,7 @@ export class BooksFormComponent implements OnInit {
     private book: Book;
     private bookForm: FormGroup;
     private currentYear: number;
+    private errors: Error[] = [];
 
     constructor(
         private activatedRoute: ActivatedRoute, 
@@ -87,7 +89,7 @@ export class BooksFormComponent implements OnInit {
             .add(this.book)
             .subscribe(
                 () => this.bookSavedSuccessfully(), 
-                errors => this.showErrors(errors));
+                res => this.setErrors(res.error));
     }
 
     private updateBook(): void {
@@ -95,7 +97,7 @@ export class BooksFormComponent implements OnInit {
             .update(this.book)
             .subscribe(
                 () => this.bookSavedSuccessfully(), 
-                errors => this.showErrors(errors));
+                res => this.setErrors(res.error));
     }
 
     private bookSavedSuccessfully() : void {
@@ -103,7 +105,7 @@ export class BooksFormComponent implements OnInit {
         this.router.navigate(['']);
     }
 
-    private showErrors(errors): void {
-
+    private setErrors(errors: Error[]): void {
+        this.errors = errors;
     }
 }
