@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Book } from "../shared/models/book";
 import { BooksService } from "../shared/services/book-service";
 
@@ -10,7 +11,7 @@ export class BooksListComponent implements OnInit {
 
     private books: Book[];
 
-    constructor(private booksService: BooksService) { }
+    constructor(private booksService: BooksService, private router: Router) { }
     
     ngOnInit(): void {
         this.loadBooks();
@@ -21,7 +22,15 @@ export class BooksListComponent implements OnInit {
             .subscribe(books => this.books = books);
     }
 
-    private deleteBook(book: Book) {
+    private addBook(): void {
+        this.router.navigate(['form', 'new']);
+    }
+
+    private editBook(book: Book): void {
+        this.router.navigate(['form', book.id]);
+    }
+
+    private deleteBook(book: Book): void {
         let deleteBook = confirm(`Deseja remover ${book.title}?`);
         if (deleteBook) {
             this.booksService

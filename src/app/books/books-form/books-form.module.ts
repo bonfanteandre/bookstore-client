@@ -1,0 +1,22 @@
+import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
+import { BooksFormComponent } from "./books-form.component";
+
+@NgModule({
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
+    declarations: [
+        BooksFormComponent
+    ],
+    exports: [
+        BooksFormComponent
+    ]
+})
+export class BooksFormModule {
+
+}

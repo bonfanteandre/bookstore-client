@@ -16,7 +16,19 @@ export class BooksService {
         return this.http.get<Book[]>(`${API}/books`);
     }
 
+    public find(id: string): Observable<Book> {
+        return this.http.get<Book>(`${API}/books/${id}`);
+    }
+
     public delete(book: Book): Observable<any> {
         return this.http.delete(`${API}/books/${book.id}`);
+    }
+
+    public add(book: Book): Observable<any> {
+        return this.http.post(`${API}/books`, book);
+    }
+
+    public update(book: Book): Observable<any> {
+        return this.http.put(`${API}/books/${book.id}`, book);
     }
 }

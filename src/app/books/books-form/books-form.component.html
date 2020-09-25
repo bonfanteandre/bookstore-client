@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row mt-2 mb-2">
+        <div class="col-12">
+            <form [formGroup]="bookForm" *ngIf="book">
+                <div class="form-group">
+                  <label><strong>Título</strong></label>
+                  <input type="text" class="form-control" placeholder="O Senhor dos Anéis" formControlName="title" required>
+                  <small class="error-message" *ngIf="showInputErrorMessage('title')">Título é um campo obrigatório.</small>
+                </div>
+                <div class="form-group">
+                    <label><strong>ISBN</strong></label>
+                    <input type="text" class="form-control" placeholder="978–85–333–0227–3" formControlName="isbn" required>
+                    <small class="error-message" *ngIf="showInputErrorMessage('isbn')">ISBN é um campo obrigatório.</small>
+                </div>
+                <div class="form-group">
+                    <label><strong>Ano de lançamento</strong></label>
+                    <input type="numer" class="form-control" placeholder="1954" formControlName="launchYear" required min="0" max="{{ currentYear }}">
+                    <small class="error-message" *ngIf="showInputErrorMessage('launchYear')">Ano de lançamento é um campo obrigatório.</small>
+                </div>
+                <div class="form-group">
+                    <label><strong>Autor</strong></label>
+                    <input type="text" class="form-control" placeholder="J. R. R. Tolkien" formControlName="author" required>
+                    <small class="error-message" *ngIf="showInputErrorMessage('author')">Autor é um campo obrigatório.</small>
+                </div>
+                <div class="form-group">
+                    <label><strong>Categoria</strong></label>
+                    <input type="text" class="form-control" placeholder="Fantasia" formControlName="category" required>
+                    <small class="error-message" *ngIf="showInputErrorMessage('category')">Categoria é um campo obrigatório.</small>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="saveBook()" [(disabled)]="bookForm.invalid">
+                    <i class="fa fa-save"></i>
+                    Salvar
+                </button>
+                <small class="error-message ml-2" *ngIf="bookForm.invalid">Preencha os campos corretamente para salvar o livro.</small>
+            </form>
+        </div>
+    </div>
+</div>
