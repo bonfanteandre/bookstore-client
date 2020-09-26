@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row mt-2 mb-2 text-center">
+        <div class="col-12">
+            <h1>Book Store</h1>
+            <bs-errors [errors]="errors"></bs-errors>
+            <form [formGroup]="loginForm">
+                <div class="form-group">
+                  <label><strong>Login</strong></label>
+                  <input type="text" class="form-control" placeholder="Login" formControlName="userId" required>
+                  <small class="error-message" *ngIf="showInputErrorMessage('userId')">Login é um campo obrigatório.</small>
+                </div>
+                <div class="form-group">
+                    <label><strong>Senha</strong></label>
+                    <input type="password" class="form-control" formControlName="password" required>
+                    <small class="error-message" *ngIf="showInputErrorMessage('password')">Senha é um campo obrigatório.</small>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="signIn()" [(disabled)]="loginForm.invalid">
+                    <i class="fa fa-sign-in"></i>
+                    Entrar
+                </button>
+                <small class="error-message ml-2" *ngIf="loginForm.invalid">Preencha os campos corretamente para entrar.</small>
+            </form>
+        </div>
+    </div>
+</div>

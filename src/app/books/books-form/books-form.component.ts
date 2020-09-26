@@ -102,7 +102,7 @@ export class BooksFormComponent implements OnInit {
 
     private bookSavedSuccessfully() : void {
         alert('Livro salvo com sucesso!');
-        this.router.navigate(['']);
+        this.router.navigate(['books']);
     }
 
     private setErrors(errors: Error[]): void {

@@ -23,11 +23,11 @@ export class BooksListComponent implements OnInit {
     }
 
     private addBook(): void {
-        this.router.navigate(['form', 'new']);
+        this.router.navigate(['books', 'new']);
     }
 
     private editBook(book: Book): void {
-        this.router.navigate(['form', book.id]);
+        this.router.navigate(['books', book.id]);
     }
 
     private deleteBook(book: Book): void {
