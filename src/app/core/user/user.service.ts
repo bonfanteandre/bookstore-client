@@ -8,6 +8,10 @@ export class UserService {
 
     constructor(private tokenService: TokenService) { }
 
+    public getToken(): string {
+        return this.tokenService.getToken();
+    }
+
     public setToken(token: string): void {
         this.tokenService.setToken(token);
     }
